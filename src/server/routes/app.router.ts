@@ -1,8 +1,6 @@
 import { createRouter } from './../createRouter';
-export const appRouter = createRouter().query('hello', {
-  resolve: () => {
-    return 'Coup';
-  },
-});
+import { roomRouter } from './room';
+
+export const appRouter = createRouter().merge('room', roomRouter);
 
 export type AppRouter = typeof appRouter;

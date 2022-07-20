@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev:ws": "ts-node-dev --project tsconfig.server.json --respawn --transpile-only src/server/wsServer.ts",
+    "dev:next": "next dev",
+    "dev": "run-p dev:*",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -11,23 +13,31 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "-": "^0.0.1",
     "@trpc/client": "^9.26.0",
     "@trpc/next": "^9.26.0",
     "@trpc/react": "^9.26.0",
     "@trpc/server": "^9.26.0",
+    "D": "^1.0.0",
     "next": "12.2.2",
+    "next-auth": "^4.10.1",
+    "npm-run-all": "^4.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-query": "^3.39.1",
     "superjson": "^1.9.1",
-    "zod": "^3.17.3"
+    "ws": "^8.8.1",
+    "zod": "^3.17.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@types/cookie": "^0.5.1",
     "@types/node": "18.0.4",
+    "@types/node-fetch": "2.5.11",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "@types/ws": "^8.5.3",
     "autoprefixer": "^10.4.7",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.2",
@@ -35,6 +45,7 @@
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "tailwindcss": "^3.1.6",
+    "ts-node-dev": "^2.0.0",
     "typescript": "4.7.4"
   }
 }
