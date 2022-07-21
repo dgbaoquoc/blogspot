@@ -9,6 +9,7 @@ import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
 import { createWSClient, wsLink } from '@trpc/client/links/wsLink';
 import { withTRPC } from '@trpc/next';
 
+import { SessionProvider } from 'next-auth/react';
 import superjson from 'superjson';
 
 interface AppPropsWithLayouts extends AppProps {
@@ -17,7 +18,11 @@ interface AppPropsWithLayouts extends AppProps {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayouts) {
   const getLayout = Component.getLayout || ((page) => page);
-  return <>{getLayout(<Component {...pageProps} />)}</>;
+  return (
+    <SessionProvider session={pageProps.session}>
+      {getLayout(<Component {...pageProps} />)}
+    </SessionProvider>
+  );
 }
 
 const getBaseUrl = () => {

@@ -17,7 +17,7 @@ export const roomRouter = createRouter()
         ...input,
         sentAt: new Date(),
         sender: {
-          name: ctx.session?.user?.name || 'unknown',
+          name: ctx.session?.user?.name as string,
         },
       };
 
